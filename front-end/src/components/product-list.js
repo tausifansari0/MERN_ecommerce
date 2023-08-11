@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductList =({products})=> (
+const ProductList =({products,addToCart})=> (
     <div className="container mb-5">
     <div id="products" className="row">
     {products.map(product=><div className="col-xl-3 col-lg-4 col-md-6 position-relative">
@@ -19,7 +19,7 @@ const ProductList =({products})=> (
                   <i className="bi bi-star-fill"></i>
               </span> </p>
               <div className="text-center">
-                <a className="btn btn-dark w-100" onClick="showToast()" role="button" > Add To Cart</a>
+                <a className="btn btn-dark w-100" onClick={()=> addToCart(product)} role="button" > Add To Cart</a>
               </div>
             </div>
           </div>
