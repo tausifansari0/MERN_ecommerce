@@ -7,12 +7,13 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 
 import { Provider } from 'react-redux';
-import { productReducer } from './reducers';
+import { cartReducer, productReducer } from './reducers/index';
 
 const store = configureStore(
   { 
     reducer:{
-      product:productReducer
+      product:productReducer,
+      cart: cartReducer
     }
   }
 )

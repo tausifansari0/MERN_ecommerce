@@ -1,8 +1,8 @@
 const Footer=()=>(
-    <div className="footer mt-auto bg-dark text-light">
-    <div className="container py-3">
-        <div className="row d-flex footer-items">
-            <div className="col-lg-4">
+    <div class="footer mt-auto bg-dark text-light">
+    <div class="container py-3">
+        <div class="row d-flex footer-items">
+            <div class="col-lg-4">
                 <h5>Categories</h5>
                 <ul>
                     <li><a href="#">Watches</a></li>
@@ -12,7 +12,7 @@ const Footer=()=>(
                     <li><a href="#">Drones</a></li>
                 </ul>
             </div>
-            <div className="col-lg-4">
+            <div class="col-lg-4">
                <h5>Useful Links</h5>
                <ul>
                    <li><a href="#">Terms</a></li>
@@ -21,31 +21,31 @@ const Footer=()=>(
                    <li><a href="#">Mission</a></li>
                </ul>
            </div>
-           <div className="col-lg-4">
+           <div class="col-lg-4">
                <h5>Get Updates</h5>
-               <div className="d-flex subscribe">
-                   <input type="text" className="form-control"/>
-                   <button className="btn btn-warning">Subscribe</button>
+               <div class="d-flex subscribe">
+                   <input type="text" class="form-control"/>
+                   <button class="btn btn-warning">Subscribe</button>
                </div>
-               <div className="mt-2">
-                <div className="btn-group me-2 social-icons" role="group" aria-label="First group">
-                  <button type="button" className="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
-                    <i className="bi bi-facebook"></i>
+               <div class="mt-2">
+                <div class="btn-group me-2 social-icons" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-facebook"></i>
                   </button>
-                  <button type="button" className="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
-                    <i className="bi bi-instagram"></i>
+                  <button type="button" class="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-instagram"></i>
                   </button>                      
-                  <button type="button" className="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
-                    <i className="bi bi-twitter"></i>
+                  <button type="button" class="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-twitter"></i>
                   </button>                      
-                  <button type="button" className="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
-                    <i className="bi bi-linkedin"></i>
+                  <button type="button" class="btn btn-secondary mx-1 d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-linkedin"></i>
                   </button>                   
                  </div>
                </div>
            </div>
        </div>
-       <div className="row text-center">
+       <div class="row text-center">
          <span>@coderdost</span>
        </div>
     </div>

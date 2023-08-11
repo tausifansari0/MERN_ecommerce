@@ -1,3 +1,5 @@
+import { ADD_TO_CART } from "../actions";
+
 const initialStateProducts={
     products :[
       {
@@ -50,8 +52,25 @@ const initialStateProducts={
       }
   ]
   }
+
+  const initialStateCart={
+    items:[]
+  }
   const productReducer=(state=initialStateProducts,action)=>{
     return state;
   }
+  const cartReducer=(state=initialStateCart,action)=>{
+    switch(action.type){
+      case ADD_TO_CART:
+        if(state.items.find(item=>item.id===action.payload.id))
+        {
+          return state;
+        }
+        else
+        return {...state,items:[...state.items,action.payload]}
+      default:
+        return state;
+    }
+  }
 
-  export {productReducer};
+  export {productReducer,cartReducer};
