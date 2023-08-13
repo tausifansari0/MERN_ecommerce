@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../actions";
+import { ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART } from "../actions";
 
 const initialStateProducts={
     products :[
@@ -59,6 +59,13 @@ const initialStateProducts={
   const productReducer=(state=initialStateProducts,action)=>{
     return state;
   }
+  const initialStateOrder={
+    item :[],
+    shipping_charges : 50,
+    discount_in_percent : 10,
+    shipping_address: ''
+  }
+
   const cartReducer=(state=initialStateCart,action)=>{
     switch(action.type){
       case ADD_TO_CART:
@@ -66,11 +73,24 @@ const initialStateProducts={
         {
           return state;
         }
-        else
-        return {...state,items:[...state.items,action.payload]}
+        return {...state,items:[...state.items,{...action.payload,quantity:1}]}
+      case CHANGED_QUANTITY:
+        const oldItem=state.items.find(item=>item.id===action.payload.id);
+        const index=state.items.indexOf(oldItem);
+        const newItems=[...state.items];
+        newItems[index]=action.payload
+        return {...state,items:newItems}
       default:
         return state;
     }
   }
 
-  export {productReducer,cartReducer};
+  const orderReducer=(state=initialStateOrder,action)=>{
+    switch(action.type){
+      case CHANGE_ORDER_CART:
+        return {...state,items:action.payload}
+      default:
+        return state;
+    }
+  }
+  export {productReducer,cartReducer,orderReducer};

@@ -3,17 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
-
+import Home from './pages/home';
+import CartPage from './pages/cartPage'
 import { configureStore } from '@reduxjs/toolkit';
 
 import { Provider } from 'react-redux';
-import { cartReducer, productReducer } from './reducers/index';
-
+import { cartReducer, orderReducer, productReducer } from './reducers/index';
+import{
+  BrowserRouter,
+  Routes,
+  Route,
+}from "react-router-dom";
 const store = configureStore(
   { 
     reducer:{
       product:productReducer,
-      cart: cartReducer
+      cart: cartReducer,
+      order: orderReducer
     }
   }
 )
@@ -21,7 +27,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App/>}>
+            <Route index element={<Home/>}/>
+            <Route path="cart" element={<CartPage/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const  Nav= ({cartCount}) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">E-shopper</a>
+          <Link className="navbar-brand" to="/">E-shopper</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -23,9 +23,9 @@ const  Nav= ({cartCount}) => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/cart.html" tabindex="-1">
+                <Link className="nav-link" to="/cart" tabindex="-1">
                   Cart<i className="bi bi-cart-plus-fill"></i> 
-                  <span className="cart-badge badge bg-success">{cartCount}</span></a>
+                  <span className="cart-badge badge bg-success">{cartCount}</span></Link>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 mb-lg-0 mx-lg-2 order-sm-last">
