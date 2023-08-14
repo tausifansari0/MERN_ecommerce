@@ -8,7 +8,7 @@ import CartPage from './pages/cartPage'
 import { configureStore } from '@reduxjs/toolkit';
 
 import { Provider } from 'react-redux';
-import { cartReducer, orderReducer, productReducer } from './reducers/index';
+import { cartReducer, orderReducer, productReducer, userReducer } from './reducers/index';
 import{
   BrowserRouter,
   Routes,
@@ -20,7 +20,8 @@ const store = configureStore(
     reducer:{
       product:productReducer,
       cart: cartReducer,
-      order: orderReducer
+      order: orderReducer,
+      user: userReducer
     }
   }
 )
