@@ -5,7 +5,7 @@ import { CHANGE_ORDER_CART,CHANGED_QUANTITY } from '../actions';
 import Cart from './cart';
 import { useEffect } from 'react';
 
-const Home=()=> {
+const CartPage=()=> {
 const dispatch=useDispatch();
 const cartItems = useSelector(state=>state.cart.items)
 const order = useSelector(state=>state.order)
@@ -25,4 +25,4 @@ return (
     </>
   );
 }
-export default Home;
+export default CartPage;

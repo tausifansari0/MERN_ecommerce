@@ -63,7 +63,9 @@ const initialStateProducts={
     item :[],
     shipping_charges : 50,
     discount_in_percent : 10,
-    shipping_address: ''
+    shipping_address: '',
+    total_items:0,
+    total_cost:0
   }
 
   const cartReducer=(state=initialStateCart,action)=>{
@@ -88,7 +90,10 @@ const initialStateProducts={
   const orderReducer=(state=initialStateOrder,action)=>{
     switch(action.type){
       case CHANGE_ORDER_CART:
-        return {...state,items:action.payload}
+        const items=action.payload;
+        const total_items=items?.reduce((total,item)=>total+(item.quantity*1),0)
+        const total_cost=items?.reduce((total,item)=>total+item.price*item.quantity,0)
+        return {...state,items:action.payload,total_items,total_cost}
       default:
         return state;
     }
