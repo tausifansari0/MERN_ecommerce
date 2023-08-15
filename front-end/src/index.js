@@ -15,6 +15,7 @@ import{
   Route,
 }from "react-router-dom";
 import CheckoutPage from './pages/checkoutPage';
+import OrdersPage from './pages/ordersPage';
 const store = configureStore(
   { 
     reducer:{
@@ -35,6 +36,7 @@ root.render(
             <Route index element={<Home/>}/>
             <Route path="cart" element={<CartPage/>}/>
             <Route path="checkout" element={<CheckoutPage/>}/>
+            <Route path="myorders" element={<OrdersPage/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

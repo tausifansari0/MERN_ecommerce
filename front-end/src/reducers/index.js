@@ -1,4 +1,4 @@
-import { ADD_ADDRESS, ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART, EMPTY_CART, PLACE_ORDER, SET_SHIP_ADDRESS } from "../actions";
+import { ADD_ADDRESS, ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART, EMPTY_CART, PLACE_ORDER, REMOVE_ITEM, SET_SHIP_ADDRESS } from "../actions";
 
 const initialStateProducts={
     products :[
@@ -110,6 +110,12 @@ const initialStateProducts={
         const newItems=[...state.items];
         newItems[index]=action.payload
         return {...state,items:newItems}
+      case REMOVE_ITEM:
+        const item=action.payload;
+        const i=state.items.findIndex(it=>it.id===item.id);
+        const itemsArray=[...state.items];
+        itemsArray.splice(i,1);
+        return {...state,items:itemsArray}
       case EMPTY_CART:
         return {...state,items:[]};
       default:

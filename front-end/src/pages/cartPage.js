@@ -1,7 +1,7 @@
 import Nav from '../components/navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/footer';
-import { CHANGE_ORDER_CART,CHANGED_QUANTITY } from '../actions';
+import { CHANGE_ORDER_CART,CHANGED_QUANTITY,REMOVE_ITEM } from '../actions';
 import Cart from './cart';
 import { useEffect } from 'react';
 
@@ -16,11 +16,14 @@ useEffect(()=>{
 const changeQuantity=(quantity,item)=>{
     dispatch({type:CHANGED_QUANTITY,payload:{...item,quantity:quantity}})
 }
+const removeItem=(item)=>{
+    dispatch({type:REMOVE_ITEM,payload:item})
+}
 
 return (
     <>
         <Nav cartCount={cartItems.length}></Nav>
-        <Cart items={cartItems} order={order} changeQuantity={changeQuantity}></Cart>
+        <Cart items={cartItems} order={order} changeQuantity={changeQuantity} removeItem={removeItem}></Cart>
         <Footer></Footer>
     </>
   );
