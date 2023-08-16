@@ -1,31 +1,43 @@
-import Nav from '../components/navbar';
-import { useDispatch, useSelector } from 'react-redux';
-import Footer from '../components/footer';
-import { CHANGE_ORDER_CART,CHANGED_QUANTITY,REMOVE_ITEM } from '../actions';
-import Cart from './cart';
-import { useEffect } from 'react';
+import Nav from "../components/navbar";
+import { useDispatch, useSelector } from "react-redux";
+import Footer from "../components/footer";
+import {
+  CHANGE_ORDER_CART,
+  CHANGED_QUANTITY,
+  REMOVE_ITEM,
+  changeOrderWithCart,
+  changeQuantityAC,
+  removeItemAC,
+} from "../actions";
+import Cart from "./cart";
+import { useEffect } from "react";
 
-const CartPage=()=> {
-const dispatch=useDispatch();
-const cartItems = useSelector(state=>state.cart.items)
-const order = useSelector(state=>state.order)
-useEffect(()=>{
-    dispatch({type:CHANGE_ORDER_CART,payload:cartItems})
-},[cartItems])
+const CartPage = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const order = useSelector((state) => state.order);
+  useEffect(() => {
+    dispatch(changeOrderWithCart(cartItems));
+  }, [cartItems]);
 
-const changeQuantity=(quantity,item)=>{
-    dispatch({type:CHANGED_QUANTITY,payload:{...item,quantity:quantity}})
-}
-const removeItem=(item)=>{
-    dispatch({type:REMOVE_ITEM,payload:item})
-}
+  const changeQuantity = (quantity, item) => {
+    dispatch(changeQuantityAC({ ...item, quantity: quantity }));
+  };
+  const removeItem = (item) => {
+    dispatch(removeItemAC(item));
+  };
 
-return (
+  return (
     <>
-        <Nav cartCount={cartItems.length}></Nav>
-        <Cart items={cartItems} order={order} changeQuantity={changeQuantity} removeItem={removeItem}></Cart>
-        <Footer></Footer>
+      <Nav cartCount={cartItems.length}></Nav>
+      <Cart
+        items={cartItems}
+        order={order}
+        changeQuantity={changeQuantity}
+        removeItem={removeItem}
+      ></Cart>
+      <Footer></Footer>
     </>
   );
-}
+};
 export default CartPage;

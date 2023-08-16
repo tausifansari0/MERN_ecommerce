@@ -3,13 +3,13 @@ import ProductList from '../components/product-list';
 import { useDispatch, useSelector } from 'react-redux';
 import Carousel from '../components/carousel';
 import Footer from '../components/footer';
-import { ADD_TO_CART } from '../actions';
+import { ADD_TO_CART, addToCartAC } from '../actions';
 const Home=()=> {
 const products= useSelector(state=>state.product.products)
 const dispatch=useDispatch();
 const cartItems= useSelector(state=>state.cart.items)
 const addToCart=(product)=>{
-    dispatch({type:ADD_TO_CART,payload:product})
+    dispatch(addToCartAC(product))
   }
   return (
     <>

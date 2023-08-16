@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/footer';
 import ProductDetails from '../components/product-details';
 import { useParams } from 'react-router-dom';
-import { ADD_TO_CART } from '../actions';
+import { ADD_TO_CART, addToCartAC } from '../actions';
 
 const ProductDetailsPage=()=> {
 const dispatch=useDispatch();
@@ -15,7 +15,7 @@ const products=useSelector(state=>state.product.products)
 const product = products.find(p => p.id === +productId)
 
 const addToCart=(product)=>{
-  dispatch({type:ADD_TO_CART,payload:product})
+  dispatch(addToCartAC(product))
 }
 
 return (
