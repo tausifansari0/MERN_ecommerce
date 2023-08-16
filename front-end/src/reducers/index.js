@@ -16,7 +16,7 @@ const initialStateProducts={
               merchant:""
           },
           image:'product-1-square',
-          images :['product-1-square','product-1-square','product-1-square']
+          images :['product-1','product-1-2','product-1-3']
       },
       {
           id:2,
@@ -32,7 +32,7 @@ const initialStateProducts={
               merchant:""
           },
           image:'product-2-square',
-          images :['product-2-square','product-2-square','product-2-square']
+          images :['product-2','product-2-2','product-2-3']
       },
       {
           id:3,
@@ -48,7 +48,7 @@ const initialStateProducts={
               merchant:""
           },
           image:'product-3-square',
-          images :['product-3-square','product-3-square','product-3-square']
+          images :['product-3','product-3-2','product-3-3']
       }
   ]
   }

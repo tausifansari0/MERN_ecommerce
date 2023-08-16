@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ProductList =({products,addToCart})=> (
     <div className="container mb-5">
@@ -9,7 +10,8 @@ const ProductList =({products,addToCart})=> (
           <div className="card product-item">
             <i className="bi bi-heart-fill position-absolute liked"></i>
             <i className="bi bi-heart position-absolute like"></i>
-            <img src={`images/${product.image}.jpg`} onClick="goToProductDetails()" className="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click to See Product Details"/>
+            <Link to={`/product/${product.id}`}> <img src={`images/${product.image}.jpg`} className="card-img-top" alt="..." data-bs-toggle="tooltip" data-bs-placement="top" title="Click to See Product Details"/></Link>
+            
             <div className="card-body">
               <h6 className="card-subtitle mb-2 text-muted  fw-light">{product.category}</h6>
             <h5 className="card-title">{product.name}</h5>
