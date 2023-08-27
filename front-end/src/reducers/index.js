@@ -1,63 +1,20 @@
-import { ADD_ADDRESS, ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART, EMPTY_CART, PLACE_ORDER, REMOVE_ITEM, SET_SHIP_ADDRESS } from "../actions";
+import { ADD_ADDRESS, ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART, EMPTY_CART, INIT_PRODUCTS, PLACE_ORDER, REMOVE_ITEM, SET_SHIP_ADDRESS } from "../actions";
 
 const initialStateProducts={
-    products :[
-      {
-          id:1,
-          name :'Sony WX-5',
-          price: 100.75,
-          category: 'Headphones',
-          rating:3,
-          color:'red',
-          size : 'S',
-          details : {
-              product :"",
-              warranty : "",
-              merchant:""
-          },
-          image:'product-1-square',
-          images :['product-1','product-1-2','product-1-3']
-      },
-      {
-          id:2,
-          name :'Apple Watch 2',
-          price: 500.75,
-          category: 'SmartWatch',
-          rating:4,
-          color:'black',
-          size : '',
-          details : {
-              product :"",
-              warranty : "",
-              merchant:""
-          },
-          image:'product-2-square',
-          images :['product-2','product-2-2','product-2-3']
-      },
-      {
-          id:3,
-          name :'Apple iPhone 11',
-          price: 799.75,
-          category: 'Mobile',
-          rating:4,
-          color:'black',
-          size : '',
-          details : {
-              product :"",
-              warranty : "",
-              merchant:""
-          },
-          image:'product-3-square',
-          images :['product-3','product-3-2','product-3-3']
-      }
-  ]
-  }
+    products :[]
+  };
 
   const initialStateCart={
     items:[]
   }
   const productReducer=(state=initialStateProducts,action)=>{
-    return state;
+    switch(action.type){
+      case INIT_PRODUCTS:
+        return{...state,products:action.payload}
+      default:
+        return state;
+    }
+    
   }
   const initialStateOrder={
     item :[],
@@ -99,20 +56,19 @@ const initialStateProducts={
   const cartReducer=(state=initialStateCart,action)=>{
     switch(action.type){
       case ADD_TO_CART:
-        if(state.items.find(item=>item.id===action.payload.id))
-        {
-          return state;
-        }
-        return {...state,items:[...state.items,{...action.payload,quantity:1}]}
+        
+        return {...state,
+          items:action.payload.items,
+        };
       case CHANGED_QUANTITY:
-        const oldItem=state.items.find(item=>item.id===action.payload.id);
+        const oldItem=state.items.find(item=>item._id===action.payload._id);
         const index=state.items.indexOf(oldItem);
         const newItems=[...state.items];
         newItems[index]=action.payload
         return {...state,items:newItems}
       case REMOVE_ITEM:
         const item=action.payload;
-        const i=state.items.findIndex(it=>it.id===item.id);
+        const i=state.items.findIndex(it=>it._id===item._id);
         const itemsArray=[...state.items];
         itemsArray.splice(i,1);
         return {...state,items:itemsArray}
