@@ -1,4 +1,4 @@
-import { ADD_ADDRESS, ADD_TO_CART,CHANGED_QUANTITY,CHANGE_ORDER_CART, EMPTY_CART, INIT_PRODUCTS, PLACE_ORDER, REMOVE_ITEM, SET_SHIP_ADDRESS } from "../actions";
+import { ADD_ADDRESS, CHANGED_ITEM_IN_CART,CHANGE_ORDER_CART, EMPTY_CART, INIT_CART, INIT_PRODUCTS, INIT_USER, PLACE_ORDER, REMOVE_ITEM, SET_SHIP_ADDRESS } from "../actions";
 
 const initialStateProducts={
     products :[]
@@ -28,52 +28,24 @@ const initialStateProducts={
   const initialStateUser={
     name :'John',
     email : 'John@example.com',
-    addresses :[
-      {
-        first_name: 'John',
-        last_name: 'Wick',
-        address1: 'Jamia Nagar',
-        address2: 'Okhla',
-        country: 'India',
-        state: 'Delhi',
-        pin_code:21005,
-        phone: '+91-1234567890'
-      },
-      {
-        first_name: 'John',
-        last_name: 'Smith',
-        address1: 'Charbagh',
-        address2: 'Lucknow',
-        country: 'India',
-        state: 'UP',
-        pin_code:10023,
-        phone: '+91-2344546309'
-      }
-    ],
+    addresses :[],
     orders:[]
   }
 
   const cartReducer=(state=initialStateCart,action)=>{
     switch(action.type){
-      case ADD_TO_CART:
-        
-        return {...state,
+      case INIT_CART:
+        return {
+          ...state,
+          items:action.payload.items,
+          userId: action.payload.userId
+        };
+      case CHANGED_ITEM_IN_CART:
+        return {
+          ...state,
           items:action.payload.items,
         };
-      case CHANGED_QUANTITY:
-        const oldItem=state.items.find(item=>item._id===action.payload._id);
-        const index=state.items.indexOf(oldItem);
-        const newItems=[...state.items];
-        newItems[index]=action.payload
-        return {...state,items:newItems}
-      case REMOVE_ITEM:
-        const item=action.payload;
-        const i=state.items.findIndex(it=>it._id===item._id);
-        const itemsArray=[...state.items];
-        itemsArray.splice(i,1);
-        return {...state,items:itemsArray}
-      case EMPTY_CART:
-        return {...state,items:[]};
+      
       default:
         return state;
     }
@@ -95,6 +67,8 @@ const initialStateProducts={
 
   const userReducer=(state=initialStateUser,action)=>{
     switch(action.type){
+      case INIT_USER:
+        return action.payload
       case ADD_ADDRESS:
         return {...state,addresses:[...state.addresses,action.payload]}
       case PLACE_ORDER:

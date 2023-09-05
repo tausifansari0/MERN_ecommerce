@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/footer';
 import ProductDetails from '../components/product-details';
 import { useParams } from 'react-router-dom';
-import { ADD_TO_CART, addToCartAC } from '../actions';
+import { CHANGED_ITEM_IN_CART, addToCartAC } from '../actions';
 
 const ProductDetailsPage=()=> {
 const dispatch=useDispatch();
